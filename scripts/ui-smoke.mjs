@@ -154,7 +154,15 @@ try {
         (SCREENSHOTS === "fail" && !ok);
       if (shouldShot) {
         const out = path.join(OUT_DIR, `${name}.png`);
-        await page.screenshot({ path: out, fullPage: true });
+        try {
+          await page.screenshot({ path: out, fullPage: true });
+        } catch (e) {
+          // Screenshot failures shouldn't fail the whole smoke-run.
+          results[results.length - 1] = {
+            ...results[results.length - 1],
+            info: { ...(results[results.length - 1]?.info ?? {}), screenshotError: String(e?.message ?? e) },
+          };
+        }
       }
 
       await page.close();

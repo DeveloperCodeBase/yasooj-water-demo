@@ -92,6 +92,24 @@ docker compose up
 - API: `http://localhost:8080`
 - مستندات سرویس: `http://localhost:8080/docs`
 
+اگر هنگام اجرای داکر خطای `address already in use` گرفتید یعنی پورت‌ها در سیستم اشغال هستند (مثلا قبلا `npm run dev` را اجرا کرده‌اید):
+
+```bash
+ss -ltnp | rg ':(5173|8080)\\b'
+```
+
+در خروجی، `pid` را پیدا کنید و همان پردازش را متوقف کنید:
+
+```bash
+kill <PID>
+```
+
+سپس دوباره:
+
+```bash
+docker compose up
+```
+
 ## قرارداد پاسخ API
 
 همه endpointها یک استاندارد ثابت دارند:

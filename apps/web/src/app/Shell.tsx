@@ -146,8 +146,9 @@ export function AppShell() {
         <div className="hidden lg:block">{sidebar}</div>
 
         <div className="flex-1 min-w-0 flex flex-col">
-          <div className="lg:hidden sticky top-0 z-20 bg-card/70 backdrop-blur border-b border-border">
-            <div className="px-3 py-2 flex items-center justify-between">
+          {/* Mobile top bar must stay fixed while scrolling. */}
+          <div className="lg:hidden fixed top-0 inset-x-0 z-30 bg-card/70 backdrop-blur border-b border-border pt-[env(safe-area-inset-top)]">
+            <div className="px-3 h-[56px] flex items-center justify-between">
               <button
                 className="rounded-xl border border-border px-3 py-2"
                 onClick={() => setMobileOpen((v) => !v)}
@@ -170,7 +171,7 @@ export function AppShell() {
             </div>
           </div>
 
-          <main className="flex-1 min-w-0">
+          <main className="flex-1 min-w-0 pt-[calc(56px+env(safe-area-inset-top))] lg:pt-0">
             <Outlet />
           </main>
 
