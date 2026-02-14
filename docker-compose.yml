@@ -1,0 +1,31 @@
+services:
+  api:
+    image: node:20-bookworm
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      - PORT=8080
+      - JWT_SECRET=dev_super_secret_change_me
+      - REFRESH_SECRET=dev_refresh_super_secret_change_me
+      - DB_FILE=/app/apps/api/storage/db.json
+      - STORAGE_DIR=/app/apps/api/storage
+    command: bash -lc "npm install && npm -w apps/api run dev"
+    ports:
+      - "8080:8080"
+
+  web:
+    image: node:20-bookworm
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      # Use relative base URL so the UI works when accessed from other devices.
+      - VITE_API_BASE_URL=/api
+      # Vite dev-server proxy target (inside docker network).
+      - API_PROXY_TARGET=http://api:8080
+    command: bash -lc "npm install && npm -w apps/web run dev"
+    ports:
+      - "5173:5173"
+    depends_on:
+      - api

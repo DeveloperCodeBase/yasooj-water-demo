@@ -1,0 +1,17 @@
+node_modules
+dist
+.DS_Store
+
+# local env
+.env
+.env.*.local
+
+# API local storage
+apps/api/storage/db.json
+apps/api/storage/uploads
+apps/api/storage/reports
+
+# Vite
+apps/web/dist
+apps/web/.vite
+

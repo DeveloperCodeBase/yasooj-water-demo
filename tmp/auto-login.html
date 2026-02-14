@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ورود خودکار (دمو)</title>
+  </head>
+  <body>
+    <script>
+      (async function () {
+        try {
+          const resp = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ email: 'viewer@demo.local', password: 'Password123!', rememberMe: true }),
+          });
+          const json = await resp.json();
+          if (!resp.ok || !json || !json.data) throw new Error('login failed');
+          localStorage.setItem('accessToken', json.data.accessToken);
+          localStorage.setItem('refreshToken', json.data.refreshToken);
+          localStorage.setItem('theme', 'light');
+          window.location.href = '/dashboard';
+        } catch (e) {
+          document.body.innerText = String(e);
+        }
+      })();
+    </script>
+  </body>
+</html>

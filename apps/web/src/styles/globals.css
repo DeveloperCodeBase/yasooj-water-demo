@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 246 246 250;
+  --card: 255 255 255;
+  --text: 18 20 28;
+  --muted: 90 94 110;
+  --border: 228 230 240;
+  --primary: 18 92 255;
+  --primary2: 4 205 159;
+  --danger: 235 55 80;
+  --warn: 245 158 11;
+  --ok: 22 163 74;
+}
+
+.theme-dark {
+  --bg: 10 12 18;
+  --card: 18 21 33;
+  --text: 235 238 245;
+  --muted: 164 170 187;
+  --border: 40 45 66;
+  --primary: 90 151 255;
+  --primary2: 72 221 187;
+  --danger: 251 113 133;
+  --warn: 251 191 36;
+  --ok: 74 222 128;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color: rgb(var(--text));
+  background: radial-gradient(1200px 700px at 20% 10%, rgba(18, 92, 255, 0.10), transparent 55%),
+    radial-gradient(900px 600px at 90% 35%, rgba(4, 205, 159, 0.10), transparent 55%),
+    linear-gradient(180deg, rgb(var(--bg)), rgb(var(--bg)));
+  font-family: var(--app-font, ui-sans-serif, system-ui);
+  direction: rtl;
+  overflow-x: hidden;
+}
+
+html.lang-fa body {
+  --app-font: "Vazirmatn";
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}

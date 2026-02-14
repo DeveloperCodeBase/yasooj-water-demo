@@ -1,0 +1,46 @@
+{
+  "name": "@yasooj/web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 5173",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 5173",
+    "lint": "node -e \"console.log('lint skipped')\""
+  },
+  "dependencies": {
+    "@fontsource/space-grotesk": "^5.2.5",
+    "@fontsource/vazirmatn": "^5.2.5",
+    "@hookform/resolvers": "^3.10.0",
+    "@tanstack/react-query": "^5.67.2",
+    "@tanstack/react-table": "^8.21.2",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.4.7",
+    "i18next": "^24.2.3",
+    "lucide-react": "^0.474.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.54.2",
+    "react-hot-toast": "^2.5.2",
+    "react-i18next": "^15.4.1",
+    "react-multi-date-picker": "^4.5.2",
+    "react-router-dom": "^7.1.5",
+    "recharts": "^2.15.0",
+    "tailwind-merge": "^3.0.1",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.2",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

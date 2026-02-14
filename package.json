@@ -1,0 +1,20 @@
+{
+  "name": "yasooj-water-dss-demo",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c cyan,magenta \"npm -w apps/api run dev\" \"npm -w apps/web run dev\"",
+    "build": "npm -w apps/api run build && npm -w apps/web run build",
+    "test": "npm -w apps/api test",
+    "ui:smoke": "node scripts/ui-smoke.mjs",
+    "lint": "npm -w apps/api run lint && npm -w apps/web run lint",
+    "format": "prettier -w ."
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "prettier": "^3.5.1",
+    "puppeteer-core": "^24.37.3"
+  }
+}

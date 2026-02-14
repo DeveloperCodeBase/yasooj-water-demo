@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ورود خودکار دمو</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui;
+        background: #f6f6fa;
+        color: #111;
+      }
+      .wrap {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+      .card {
+        width: 100%;
+        max-width: 560px;
+        background: #fff;
+        border: 1px solid #e7e8f0;
+        border-radius: 18px;
+        padding: 18px 18px;
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .muted {
+        color: #5b5f6e;
+        font-size: 12px;
+        line-height: 1.7;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border: 1px solid #dfe2ee;
+        background: #f6f7fb;
+        color: #111;
+        padding: 10px 12px;
+        border-radius: 12px;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .btn-primary {
+        background: #125cff;
+        border-color: #125cff;
+        color: #fff;
+      }
+      .pill {
+        border: 1px solid #dfe2ee;
+        background: #fff;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+      }
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      }
+      .spinner {
+        width: 18px;
+        height: 18px;
+        border: 2px solid rgba(18, 92, 255, 0.2);
+        border-top-color: rgba(18, 92, 255, 1);
+        border-radius: 999px;
+        animation: spin 0.8s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="card">
+        <div class="row">
+          <div>
+            <div style="font-size: 14px; font-weight: 700">ورود خودکار (دمو)</div>
+            <div class="muted" style="margin-top: 4px">
+              این صفحه فقط برای دمو است و برای تست سریع صفحات داخل سامانه استفاده می‌شود.
+            </div>
+          </div>
+          <div class="pill mono" id="who">...</div>
+        </div>
+
+        <div class="muted" style="margin-top: 14px">
+          نقش:
+          <span class="mono" id="role">viewer</span>
+          · ایمیل:
+          <span class="mono" id="email">viewer@demo.local</span>
+          · مقصد:
+          <span class="mono" id="next">/dashboard</span>
+        </div>
+
+        <div class="row" style="margin-top: 14px">
+          <button class="btn btn-primary" id="go" type="button">
+            <span class="spinner" id="sp"></span>
+            <span id="btnText">در حال ورود...</span>
+          </button>
+          <a class="btn" href="/" style="text-decoration: none">بازگشت به صفحه اول</a>
+        </div>
+
+        <div class="muted" id="msg" style="margin-top: 14px"></div>
+        <div class="muted" style="margin-top: 10px; opacity: 0.9">
+          مالکیت و حقوق این سامانه متعلق به شرکت شبکه هوشمند ابتکار ویستا است.
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var as = params.get("as") || "viewer";
+        var next = params.get("next") || "/dashboard";
+        var password = params.get("password") || "Password123!";
+
+        var map = {
+          viewer: "viewer@demo.local",
+          analyst: "analyst@demo.local",
+          admin: "admin@demo.local",
+          org_admin: "orgadmin@demo.local",
+          super_admin: "superadmin@demo.local",
+        };
+
+        var email = map[as] || as;
+
+        document.getElementById("role").textContent = as;
+        document.getElementById("email").textContent = email;
+        document.getElementById("next").textContent = next;
+        document.getElementById("who").textContent = "دمو";
+
+        function setMsg(text) {
+          document.getElementById("msg").textContent = text || "";
+        }
+
+        async function doLogin() {
+          document.getElementById("btnText").textContent = "در حال ورود...";
+          document.getElementById("sp").style.display = "inline-block";
+          setMsg("لطفا چند لحظه صبر کنید...");
+
+          try {
+            var resp = await fetch("/api/auth/login", {
+              method: "POST",
+              headers: { "content-type": "application/json" },
+              body: JSON.stringify({ email: email, password: password, rememberMe: true }),
+            });
+            var json = await resp.json().catch(function () {
+              return null;
+            });
+            if (!resp.ok || !json || !json.data) {
+              var msg = (json && json.error && json.error.message) || "ورود ناموفق بود.";
+              throw new Error(msg);
+            }
+
+            localStorage.setItem("accessToken", json.data.accessToken);
+            localStorage.setItem("refreshToken", json.data.refreshToken);
+            localStorage.setItem("theme", (json.data.user && json.data.user.theme) || "light");
+
+            window.location.replace(next);
+          } catch (e) {
+            document.getElementById("btnText").textContent = "تلاش دوباره";
+            document.getElementById("sp").style.display = "none";
+            setMsg((e && e.message) || "خطا در ورود.");
+          }
+        }
+
+        document.getElementById("go").addEventListener("click", function () {
+          doLogin();
+        });
+
+        doLogin();
+      })();
+    </script>
+  </body>
+</html>
+

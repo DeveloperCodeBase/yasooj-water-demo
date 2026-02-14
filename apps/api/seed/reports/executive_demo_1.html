@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>گزارش مدیریتی ماهانه (دمو)</title>
+    <style>
+      body { font-family: Vazirmatn, ui-sans-serif, system-ui; background: #f7f7fb; color: #111; padding: 24px; }
+      .card { max-width: 980px; margin: 0 auto; background: rgba(255,255,255,0.92); border: 1px solid #e9e9ef; border-radius: 16px; padding: 18px 20px; }
+      h1 { margin: 0 0 10px; font-size: 22px; }
+      .muted { color: #555; font-size: 13px; line-height: 1.8; }
+      .pill { display: inline-block; padding: 3px 10px; border-radius: 999px; background: #eef2ff; border: 1px solid #dbe4ff; font-size: 12px; }
+      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+      @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+      .kpi { border: 1px solid #eee; border-radius: 14px; padding: 12px 12px; background: #fcfcff; }
+      .kpi b { display: block; margin-bottom: 6px; font-size: 13px; }
+      .kpi .v { font-size: 18px; font-weight: 700; }
+      .bar { height: 10px; background: #eef2ff; border-radius: 999px; overflow: hidden; border: 1px solid #dbe4ff; margin-top: 10px; }
+      .bar > div { height: 100%; width: 62%; background: linear-gradient(90deg,#125cff,#04cd9f); }
+      .footer { margin-top: 18px; color: #555; font-size: 12px; border-top: 1px solid #eee; padding-top: 12px; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>گزارش مدیریتی ماهانه (دمو)</h1>
+      <div class="muted">
+        این فایل برای نمایش دمو تولید شده است. اعداد و نمودارها نمونه هستند و صرفاً برای نمایش جریان کاری استفاده می‌شوند.
+      </div>
+      <div style="margin-top: 10px" class="muted">
+        <span class="pill">بازه نمونه: ۱۴۰۴/۱۰ تا ۱۴۰۴/۱۲</span>
+        <span style="display:inline-block; width: 10px"></span>
+        <span class="pill">دامنه: دشت یاسوج</span>
+      </div>
+      <div class="grid">
+        <div class="kpi"><b>میانگین سطح آب زیرزمینی</b><div class="v">۱۱۰۳٫۲ <span style="font-size:12px;color:#555;font-weight:500">متر</span></div></div>
+        <div class="kpi"><b>نرخ افت ماهانه</b><div class="v">۰٫۴۴ <span style="font-size:12px;color:#555;font-weight:500">متر/ماه</span></div></div>
+        <div class="kpi"><b>چاه‌های پرریسک</b><div class="v">۱۰</div><div class="muted">ریسک زیاد و بحرانی</div></div>
+        <div class="kpi"><b>کیفیت داده</b><div class="v">۷۸/۱۰۰</div><div class="bar"><div></div></div></div>
+        <div class="kpi"><b>شاخص خشکسالی (نمونه)</b><div class="v">۰٫۶۱</div><div class="muted">مقیاس ۰ تا ۱</div></div>
+        <div class="kpi"><b>هشدارهای ۳۰ روز اخیر</b><div class="v">۳</div><div class="muted">فعال‌شده در سیستم</div></div>
+      </div>
+      <div class="footer">
+        مالکیت و حقوق این سامانه متعلق به شرکت شبکه هوشمند ابتکار ویستا است.
+      </div>
+    </div>
+  </body>
+</html>
