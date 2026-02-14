@@ -180,7 +180,7 @@ export function WellDetailPage() {
         <div><div class="k">ریسک</div><div class="v">${riskLabel}</div></div>
         <div><div class="k">کیفیت داده</div><div class="v">${well.dataQualityScore}</div></div>
       </div>
-      <div class="footer">مالکیت و حقوق این سامانه متعلق به شرکت شبکه هوشمند ابتکار ویستا است.</div>
+      <div class="footer">مالکیت و حقوق این سامانه متعلق به مرکز راهبری پژوهش و پیشرفت هوش مصنوعی جهاددانشگاهی است.</div>
     </div>
   </body>
 </html>`;

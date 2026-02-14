@@ -60,7 +60,7 @@ function renderHtmlReport(opts: { title: string; type: ReportType; sections: str
       </div>
       <h3 style="margin:12px 0 6px">بخش‌ها</h3>
       <ul>${sectionList}</ul>
-      <div class="footer">مالکیت و حقوق این سامانه متعلق به شرکت شبکه هوشمند ابتکار ویستا است.</div>
+      <div class="footer">مالکیت و حقوق این سامانه متعلق به مرکز راهبری پژوهش و پیشرفت هوش مصنوعی جهاددانشگاهی است.</div>
     </div>
   </body>
 </html>`;

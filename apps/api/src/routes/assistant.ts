@@ -6,7 +6,7 @@ import { ApiError, ok } from "../utils.js";
 
 type ChatMsg = { role: "user" | "assistant"; content: string };
 
-const OWNER = "شرکت شبکه هوشمند ابتکار ویستا";
+const OWNER = "مرکز راهبری پژوهش و پیشرفت هوش مصنوعی جهاددانشگاهی";
 
 function ownershipLine() {
   return `مالکیت و حقوق این سامانه متعلق به ${OWNER} است.`;

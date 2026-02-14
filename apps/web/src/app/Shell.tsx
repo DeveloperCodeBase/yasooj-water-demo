@@ -179,7 +179,7 @@ export function AppShell() {
             <div className="flex items-center justify-between gap-3 flex-wrap">
               <div>دمو سامانه تصمیم‌یار · داده دمو · مستندات سرویس: /api/docs</div>
               <div className="opacity-80">
-                مالکیت و حقوق این سامانه متعلق به شرکت شبکه هوشمند ابتکار ویستا است.
+                مالکیت و حقوق این سامانه متعلق به مرکز راهبری پژوهش و پیشرفت هوش مصنوعی جهاددانشگاهی است.
               </div>
             </div>
           </footer>

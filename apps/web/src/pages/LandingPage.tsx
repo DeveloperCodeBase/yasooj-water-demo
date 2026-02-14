@@ -213,7 +213,7 @@ export function LandingPage() {
                 <Card>
                   <CardBody>
                     <div className="text-[12px] text-muted leading-relaxed text-right">
-                      مالکیت و حقوق این سامانه متعلق به شرکت شبکه هوشمند ابتکار ویستا است.
+                      مالکیت و حقوق این سامانه متعلق به مرکز راهبری پژوهش و پیشرفت هوش مصنوعی جهاددانشگاهی است.
                     </div>
                   </CardBody>
                 </Card>
@@ -221,7 +221,7 @@ export function LandingPage() {
             </div>
 
             <div className="mt-10 text-center text-[12px] text-muted">
-              <span className="opacity-80">مالکیت و حقوق این سامانه متعلق به شرکت شبکه هوشمند ابتکار ویستا است.</span>
+              <span className="opacity-80">مالکیت و حقوق این سامانه متعلق به مرکز راهبری پژوهش و پیشرفت هوش مصنوعی جهاددانشگاهی است.</span>
             </div>
           </div>
         </main>

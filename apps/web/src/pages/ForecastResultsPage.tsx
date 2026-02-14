@@ -167,7 +167,7 @@ export function ForecastResultsPage() {
           ${(results.slice(0, 20)).map((r) => `<tr><td>${r.wellCode}</td><td>${toFaDigits(String(r.p50FinalLevel))}</td><td>${toFaDigits(String(Math.round(r.probCrossThreshold * 100)))}٪</td><td>${toFaDigits(String(r.expectedDropRate))}</td><td>${riskLabel(r.riskLevel)}</td></tr>`).join("")}
         </tbody>
       </table>
-      <div class="footer">مالکیت و حقوق این سامانه متعلق به شرکت شبکه هوشمند ابتکار ویستا است.</div>
+      <div class="footer">مالکیت و حقوق این سامانه متعلق به مرکز راهبری پژوهش و پیشرفت هوش مصنوعی جهاددانشگاهی است.</div>
     </div>
   </body>
 </html>`;

@@ -84,7 +84,7 @@ test("POST /assistant/chat (unauth) ownership question", async () => {
   const json = res.json() as any;
   assert.match(
     String(json.data?.reply ?? ""),
-    /مالکیت و حقوق این سامانه متعلق به شرکت شبکه هوشمند ابتکار ویستا است\./,
+    /مالکیت و حقوق این سامانه متعلق به مرکز راهبری پژوهش و پیشرفت هوش مصنوعی جهاددانشگاهی است\./,
   );
 });
 
@@ -220,7 +220,7 @@ test("Reports: seeded report files are downloadable (viewer)", async () => {
   const dl = dlRes.json() as any;
   assert.equal(String(dl.data?.mimeType ?? ""), "text/html; charset=utf-8");
   const html = Buffer.from(String(dl.data?.contentBase64 ?? ""), "base64").toString("utf8");
-  assert.match(html, /مالکیت و حقوق این سامانه متعلق به شرکت شبکه هوشمند ابتکار ویستا است\./);
+  assert.match(html, /مالکیت و حقوق این سامانه متعلق به مرکز راهبری پژوهش و پیشرفت هوش مصنوعی جهاددانشگاهی است\./);
 });
 
 test("POST /assistant/chat refuses provider/model questions and returns ownership line", async () => {
@@ -233,7 +233,7 @@ test("POST /assistant/chat refuses provider/model questions and returns ownershi
   const json = res.json() as any;
   const reply = String(json.data?.reply ?? "");
   assert.match(reply, /جزئیات فنی قابل ارائه نیست\./);
-  assert.match(reply, /مالکیت و حقوق این سامانه متعلق به شرکت شبکه هوشمند ابتکار ویستا است\./);
+  assert.match(reply, /مالکیت و حقوق این سامانه متعلق به مرکز راهبری پژوهش و پیشرفت هوش مصنوعی جهاددانشگاهی است\./);
   assert.ok(!/openrouter|openrouter\\.ai|gpt|openai|anthropic|claude|gemini/i.test(reply));
 });
 
@@ -648,7 +648,7 @@ test(
     assert.equal(dlRes.statusCode, 200);
     const dl = (dlRes.json() as any).data as any;
     const html = Buffer.from(String(dl.contentBase64 ?? ""), "base64").toString("utf8");
-    assert.match(html, /مالکیت و حقوق این سامانه متعلق به شرکت شبکه هوشمند ابتکار ویستا است\./);
+    assert.match(html, /مالکیت و حقوق این سامانه متعلق به مرکز راهبری پژوهش و پیشرفت هوش مصنوعی جهاددانشگاهی است\./);
   }
 );
 
